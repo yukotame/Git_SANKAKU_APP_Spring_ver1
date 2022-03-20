@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--
+-------------------------------------------------------------------------------------------------
+■■■ファイル名：create_schedule.html■■■
+概要：HTML
+詳細：HTML文書（スケジュール作成画面）を出力する。
+-------------------------------------------------------------------------------------------------
+-->
+<head>
+  <title>スケジュール作成画面</title>
+</head>
+<body th:object="${scheduleForm}">
+
+  	<h2>スケジュール作成画面</h2>
+
+	<form  th:action="@{/schedule/register}"  method="post">
+		<p th:text="'発案者：： '     + *{originatorName}">ユーザーID</p><br>
+		<p th:text="'発案者ID： '           + *{originatorId}">ユーザー名</p><br>
+	    <div>
+			<p>スケジュール名：<br>
+				<input type="text" name="scheduleName" maxlength="50" id="ID_SCHEDULE_NAME" th:value="*{scheduleName}">
+				<span th:if="${#fields.hasErrors('scheduleName')}" th:errors="*{scheduleName}" style="color: red">error!</span>
+			</p>
+		</div>
+
+	    <div>
+	    	<span th:if="${#fields.hasErrors('scheduleDate1')}" th:errors="*{scheduleDate1}" style="color:red">error!</span>
+			<p>日程：<br>
+				<input type="date" name="scheduleDate1" maxlength="50" id="ID_SCHEDULE_DATE1" class="CLASS_SCHEDULE_DATE">
+
+			</p>
+
+			<span th:if="${#fields.hasErrors('scheduleDate2')}" th:errors="*{scheduleDate2}" style="color:red">error!</span>
+			<p>日程：<br>
+				<input type="date" name="scheduleDate2" maxlength="50" id="ID_SCHEDULE_DATE2" class="CLASS_SCHEDULE_DATE">
+
+			</p>
+
+	        <span th:if="${#fields.hasErrors('scheduleDate3')}" th:errors="*{scheduleDate3}" style="color:red">error!</span>
+			<p>日程：<br>
+				<input type="date" name="scheduleDate3" maxlength="50" id="ID_SCHEDULE_DATE3" class="CLASS_SCHEDULE_DATE">
+
+			</p>
+		</div>
+
+    <input type="submit" value="スケジュール登録" id="ID_ADD">
+  	</form>
+
+  <br>
+  <a th:href="@{/login_menu}">ログインメニュー画面へ</a>
+  <br>
+
+
+  <!-- src/main/resources/static/js/**.jsを読み込む -->
+  <script type="text/javascript" src="js/demo2.js" th:src="@{/js/demo2.js}"></script>
+  <script type="text/javascript" src="js/create-schedule-check.js" th:src="@{/js/create-schedule-check.js}"></script>
+
+</body>
+</html>

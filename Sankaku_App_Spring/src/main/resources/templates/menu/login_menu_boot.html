@@ -1,0 +1,67 @@
+
+<!doctype html>
+<html lang="ja" class="h-100" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ログインメニュー画面</title>
+
+
+<!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="starter-template.css"  th:href="@{/css/starter-template.css}" rel="stylesheet">
+
+
+</head>
+
+<body class="big-bg">
+
+	<main >
+  	<div class="container">
+	<div class="form-class">
+		<div class="title-class">
+			<h1>ログインメニュー画面</h1>
+		</div>
+
+		<div class="title-class">
+			<h2 th:text="|${userName}さん　ようこそ|">Dummyさん　ようこそ </h2>
+		</div>
+
+		<div>
+			<a class="btn btn-primary btn-lg" href="#" th:href="@{'/schedule/menu1'}">スケジュールの作成</a>
+			<a class="btn btn-primary btn-lg" href="#" th:href="@{'/schedule/menu2' }">参加可否入力</a>
+			<a class="btn btn-primary btn-lg" href="#" th:href="@{'/schedule/menu3' }" >参加可否確認</a>
+			<a class="btn btn-primary btn-lg" href="#" th:href="@{'/schedule/menu4'}">スケジュール取消</a>
+		</div>
+
+<!-- 		<div class="pt-5" >
+		<a  href="#" th:href="@{/init/menu}">初期メニューへ</a>
+		</div> -->
+		 <div sec:authorize="hasRole('ADMIN')">
+            <p>今は<b>ADMIN</b>権限でログインしています。</p>
+            <a class="btn btn-primary btn-lg" href="#" th:href="@{'/userBrowse/menu5'}">ユーザー一覧</a>
+
+        </div>
+        <div sec:authorize="hasRole('USER')">
+            <p>今は<b>USER</b>権限でログインしています。</p>
+        </div>
+
+
+
+		<div class="button-parent">
+		<div class="button-child">
+				<form  th:action="@{/logout}" method="post">
+				<input type="submit" value="ログアウト" class="btn btn-secondary"/>
+			</form>
+		</div>
+		</div>
+
+	</div>
+	</div>
+
+	</main>
+
+  </body>
+</html>

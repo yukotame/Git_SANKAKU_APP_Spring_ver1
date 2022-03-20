@@ -1,0 +1,46 @@
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap core CSS -->
+	<link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="signin.css" th:href="@{/css/signin.css}" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+<main class="form-signin">
+	<form th:action="@{/login}" method="POST" >
+
+	  <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" th:src="@{/images/bootstrap_img.jpg}" alt="img" width="72" height="57">
+	  <h1 class="h3 mb-3 fw-normal">ログインフォーム</h1>
+
+	  <p th:if="${param.error}">Error!</p>
+
+	  <div th:if="${param.logout}">ログアウトしました!!</div>
+
+	  <div class="form-floating">
+	    <input type="text" class="form-control" id="username" name="username" placeholder="UserName">
+	    <label for="username">ユーザー名</label>
+	  </div>
+	  <div class="form-floating">
+	    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+	    <label for="password">パスワード</label>
+	  </div>
+
+
+	  <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン</button>
+
+
+	</form>
+	<footer>
+		<p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+	</footer>
+</main>
+
+
+
+</body>
+</html>

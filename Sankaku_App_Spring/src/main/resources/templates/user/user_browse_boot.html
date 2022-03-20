@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>ユーザー登録確認画面</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="starter-template.css"  th:href="@{/css/starter-template.css}" rel="stylesheet">
+
+</head>
+<body th:object="${userList}" class="bg-light">
+<main >
+<div class="container">
+
+	<div class="form-class">
+
+		<div class="title-class">
+	 	      <h1>ユーザー一覧画面</h1>
+	 	</div>
+
+
+	<table class="table">
+		<tr>
+			<th>ユーザーID</th>
+			<th>ユーザー名</th>
+			<th>権限</th>
+			<th>メールアドレス</th>
+
+		</tr>
+		<tr th:each="user: ${userList}">
+			<td>
+				<span th:text="${user.userId}"></span>
+
+			</td>
+			<td>
+				<span th:text="${user.userName}"></span>
+
+			</td>
+			<td>
+				<span th:text="${user.authority}"></span>
+
+			</td>
+			<td>
+				<span th:text="${user.email}"></span>
+
+			</td>
+
+	</table>
+	<div>
+		<a class="btn btn-secondary mt-5" th:href="@{/login_menu}">ログインメニュー画面へ</a>
+	</div>
+
+	</div>
+
+</div>
+</main>
+
+
+</body>
+</html>

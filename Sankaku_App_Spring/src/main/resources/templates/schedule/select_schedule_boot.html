@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<!--
+-------------------------------------------------------------------------------------------------
+■■■ファイル名：select_schedule.html■■■
+概要：HTML
+詳細：HTML文書（スケジュール検索画面）を出力する。
+-------------------------------------------------------------------------------------------------
+-->
+
+<head>
+  <title>スケジュール検索画面</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="starter-template.css"  th:href="@{/css/starter-template.css}" rel="stylesheet">
+</head>
+<body>
+<main>
+  	<div class="container">
+	<div class="form-class">
+		<div class="title-class">
+		  	<h1 >スケジュール検索画面</h1>
+		</div>
+
+		<div class="mt-5">
+			<input type="hidden" name="MENU" th:value =${menuId}>
+			<input type="hidden" name="SEARCH" th:value =1>
+			<form th:object="${scheduleSelectForm}" th:action="@{'/schedule/select/'+ ${menuId} }" method="get">
+				<label for="ID_SCHEDULE_ID" class="form-label">スケジュールID検索：</label>
+				<input type="text" name="SCHEDULE_ID" maxlength="20" id="ID_SCHEDULE_ID" th:field=*{scheduleId}>
+				<input type="submit" value="検索" id="ID_SERCH" class="btn btn-primary">
+			</form>
+		</div>
+
+		<div class="mt-5">
+			<input type="hidden" name="MENU" th:value =${menuId}>
+			<input type="hidden" name="SEARCH" value =2>
+			<form th:action="@{'/schedule/selectAll/'+ ${menuId}}" method="get">
+				<label for="ID_SERCH_ALL" class="form-label">スケジュール全件検索：</label>
+				<input type="submit" value="スケジュール全件検索" id="ID_SERCH_ALL" class="btn btn-primary">
+			</form>
+		</div>
+		<div>
+			<a class="btn btn-secondary mt-5" th:href="@{/login_menu}">ログインメニュー画面へ</a>
+		</div>
+
+	</div>
+	</div>
+
+</main>
+
+  <script type="text/javascript" src="js/select-menu-check.js" th:src="@{/js/select-menu-check.js}"></script>
+</body>
+</html>

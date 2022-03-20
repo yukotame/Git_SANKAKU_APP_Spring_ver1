@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- -------------------------------------------------------------------------------------------------
+■■■ファイル名：user_register.html■■■
+概要：HTML
+詳細：HTML文書（ユーザー登録画面）を出力する。
+------------------------------------------------------------------------------------------------- -->
+
+<head>
+  	<title>ユーザー登録画面</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="starter-template.css"  th:href="@{/css/starter-template.css}" rel="stylesheet">
+
+</head>
+
+<body th:object="${userForm}" class="bg-light">
+
+<main >
+  	<div class="container">
+
+	<div class="form-class">
+
+		<div class="title-class">
+	 	      <h1>ユーザー登録フォーム</h1>
+	 	</div>
+	 	<div class="text-primary">
+	 	      <p>本サイトにユーザー登録をする方はこちらから</p>
+	 	</div>
+
+		<form th:action="@{/userRegister/register}"  method="post">
+			<div class="form-group mb-3">
+			  <label for="ID_USER_ID">ユーザーID</label>
+			  <input type="text" class="form-control" id="ID_USER_ID"  name="userId" aria-describedby="nameHelp" placeholder="ユーザーID" accept=""required="required" th:value="*{userId}">
+			  <span th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" style="color: red">error!</span>
+			</div>
+
+			<div class="form-group mb-3">
+			  <label for="ID_USER_NAME">ユーザー名</label>
+			  <input type="text" class="form-control" id="ID_USER_NAME" name="name" aria-describedby="nameHelp" placeholder="ユーザー名" accept=""required="required" th:value="*{name}">
+			  <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red">error!</span>
+			</div>
+			<div class="form-group mb-3">
+			  <label for="ID_EMAIL">メールアドレス</label>
+			  <input type="email" class="form-control" id="ID_EMAIL" aria-describedby="emailHelp" name="email" placeholder="Email" required="required" th:value="*{email}">
+			  <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red">error!</span>
+			</div>
+			<div class="form-group">
+			  <label for="inputPassword">Password</label>
+			  <input type="password" class="form-control" id="inputPassword"  name="password"  aria-describedby="passwordHelp" placeholder="Password" required="required" th:value="*{password}">
+			</div>
+
+	     	<button type="submit" class="btn btn-primary mt-3" id ="USE_REGISTER_SUBMIT">ユーザー登録確認画面へ</button>
+	   	</form>
+		<div class="pt-2" >
+		<a class="btn btn-secondary" href="#" th:href="@{/init/menu}">初期メニューへ</a>
+		</div>
+
+	</div>
+
+
+</div>
+</main>
+
+
+
+ <!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">ユーザー登録確認画面</title>
+</head>
+<body>
+<h1 th:text="${title}">ユーザー登録確認画面</h1>
+
+<p>入力内容をご確認ください</p>
+<div th:object="${userForm}">
+
+<p th:text="'ユーザーID： '     + *{userId}">ユーザーID</p><br>
+<p th:text="'名前： '           + *{name}">ユーザー名</p><br>
+<p th:text="'パスワード： '     + *{password}">パスワード</p><br>
+<p th:text="'メールアドレス： ' + *{email}">メール</p><br>
+
+
+
+<form method="post" action="#" th:action="@{/user/form}">
+	<input type="hidden" name="userId" th:value="*{userId}">
+	<input type="hidden" name="name" th:value="*{name}">
+	<input type="hidden" name="password" th:value="*{password}">
+	<input type="hidden" name="email" th:value="*{email}">
+	<input type="submit" value="戻る">
+</form>
+<br>
+<form method="post" action="#" th:action="@{/user/confirm}">
+	<input type="hidden" name="userId" th:value="*{userId}">
+	<input type="hidden" name="name" th:value="*{name}">
+	<input type="hidden" name="password" th:value="*{password}">
+	<input type="hidden" name="email" th:value="*{email}">
+	<input type="submit" value="ユーザー登録">
+</form>
+</div>
+</body>
+</html>

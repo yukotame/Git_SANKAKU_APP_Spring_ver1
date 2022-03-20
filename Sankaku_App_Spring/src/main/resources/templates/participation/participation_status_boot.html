@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--
+-------------------------------------------------------------------------------------------------
+■■■ファイル名：participation_status.html■■■
+☆BP：日にちごとに参加者をまとめたListを出力する場合
+概要：HTML
+詳細：HTML文書（参加状況確認画面）を出力する。
+-------------------------------------------------------------------------------------------------
+-->
+
+<head>
+  <title>参加可否一覧画面</title>
+  	<!-- Bootstrap core CSS -->
+	<link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="starter-template.css"  th:href="@{/css/starter-template.css}" rel="stylesheet">
+</head>
+<body th:object="${participationStatusAllForm}">
+
+<main>
+	<div class="container">
+	<div class="form-class">
+		<div class="title-class">
+ 			<h1>参加可否一覧画面</h1>
+ 		</div>
+
+<table class="table table-striped" >
+		<tr>
+			<th>参加者</th>
+
+			<th th:each="date: *{participationStatusAllList[0].scheduleDateList}">
+				<span th:text="${date}"></span>
+			</th>
+		</tr>
+		<tr th:each="personData: *{participationStatusAllList}">
+			<td th:text="${personData.userId}"></td>
+			<td th:each="status : ${personData.participationStatusList}" >
+			<span th:text="${status}"></span>
+			</td>
+		</tr>
+
+		<tr>
+			<td>参加</td>
+			<td th:each="participationCnt: ${participationCntList}">
+			<span th:text="${participationCnt}"></span>
+			</td>
+		</tr>
+		<tr>
+			<th>不参加</th>
+			<td th:each="nonParticipationCnt: ${nonParticipationCntList}">
+			<span th:text="${nonParticipationCnt}"></span>
+			</td>
+		</tr>
+		<tr>
+			<th>未定</th>
+			<td th:each="undecidedCnt: ${undecidedCntList}">
+			<span th:text="${undecidedCnt}"></span>
+			</td>
+		</tr>
+
+	</table>
+
+
+
+
+
+	<div>
+	 <a class="btn btn-secondary  mt-3"  th:href="@{/login_menu}">ログインメニュー画面へ</a>
+	</div>
+
+</div>
+</div>
+</main>
+
+  <script type="text/javascript" src="js/login-check.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>ユーザー登録確認画面</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="starter-template.css"  th:href="@{/css/starter-template.css}" rel="stylesheet">
+
+</head>
+<body th:object="${userForm}" class="bg-light">
+<main >
+<div class="container">
+
+	<div class="form-class">
+
+		<div class="title-class">
+	 	      <h1>ユーザー登録確認画面</h1>
+	 	</div>
+	 	<div class="text-primary mb-3">
+	 	      <p>入力内容をご確認ください</p>
+	 	</div>
+
+		<div th:object="${userForm}" class="form-group confirm">
+			<ul>
+				<li th:text="'ユーザーID： '     + *{userId}">ユーザーID</li>
+				<li th:text="'名前： '           + *{name}">ユーザー名</li>
+				<li th:text="'パスワード： '     + *{password}">パスワード</li>
+				<li th:text="'メールアドレス： ' + *{email}">メール</li>
+			</ul>
+		</div>
+
+		<div class="button-parent">
+		<div class="button-child">
+			<form method="post" action="#" th:action="@{/userRegister/confirm}" >
+				<input type="hidden" name="userId" th:value="*{userId}">
+				<input type="hidden" name="name" th:value="*{name}">
+				<input type="hidden" name="password" th:value="*{password}">
+				<input type="hidden" name="email" th:value="*{email}">
+				<input type="submit" value="ユーザー登録" class="btn btn-primary">
+			</form>
+		</div>
+		<div class="button-child">
+			<form method="post" action="#" th:action="@{/userRegister/form}" >
+				<input type="hidden" name="userId" th:value="*{userId}">
+				<input type="hidden" name="name" th:value="*{name}">
+				<input type="hidden" name="password" th:value="*{password}">
+				<input type="hidden" name="email" th:value="*{email}">
+				<input type="submit" value="戻る" class="btn btn-secondary mt-1">
+			</form>
+		</div>
+		</div>
+
+	</div>
+
+</div>
+</main>
+
+
+</body>
+</html>

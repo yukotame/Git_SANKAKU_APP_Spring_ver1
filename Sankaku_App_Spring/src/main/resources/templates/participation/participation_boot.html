@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--
+-------------------------------------------------------------------------------------------------
+■■■ファイル名：participation.jsp■■■
+概要：JSP
+詳細：HTML文書（参加可否入力画面）を出力する。
+-------------------------------------------------------------------------------------------------
+-->
+<head>
+	<title>参加可否入力画面</title>
+	<!-- Bootstrap core CSS -->
+	<link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="starter-template.css"  th:href="@{/css/starter-template.css}" rel="stylesheet">
+</head>
+<body>
+
+<main>
+	<div class="container">
+	<div class="form-class">
+		<div class="title-class">
+			<h1>参加可否入力画面</h1>
+		</div>
+
+	  	<form  th:object="${dateParticipationListForm}" th:action="@{/participation/selected}" method="post">
+			<p name="USER_ID" th:text="|ユーザーID:  *{userId}|">    </p>
+			<p name="USER_NAME" th:text="|ユーザー名:  *{userName}|">    </p>
+
+		    <table class="table table-bordered">
+				<tr>
+					<th>日程</th>
+					<th>参加可否</th>
+
+				</tr>
+				<tr th:each="dateparticipation ,stat: *{dateParticipationList}">
+					 <td>
+					 	<p th:text="*{dateParticipationList[__${stat.index}__].scheduleableDateOutput.scheduleDate}"></p>
+						<input
+						 th:field="*{dateParticipationList[__${stat.index}__].scheduleableDateOutput.scheduleDate}" type="hidden" />
+						 <input
+						 th:field="*{dateParticipationList[__${stat.index}__].scheduleableDateOutput.scheduleableDateId}" type="hidden" />
+					</td>
+					<td >
+						<div th:each="item : ${radioParticipation}">
+						<input type="radio" th:name="${dateparticipation.scheduleableDateOutput.scheduleDate}"
+						 th:value="${item.value}" th:text="${item.key}" th:field="*{dateParticipationList[__${stat.index}__].selectedParticipation}" />
+		 				</div>
+					</td>
+				</tr>
+			</table>
+			<input class="btn btn-primary mt-3" type="submit" value="参加者追加" id="ID_SUBMIT">
+	  	</form>
+		<div>
+			<a class="btn btn-secondary  mt-3" th:href="@{/login_menu}">ログインメニュー画面へ</a>
+		</div>
+	</div>
+	</div>
+</main>
+  <!-- <script type="text/javascript" src="js/login-check.js"></script>
+ -->
+</body>
+</html>

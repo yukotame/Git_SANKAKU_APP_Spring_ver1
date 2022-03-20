@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- -------------------------------------------------------------------------------------------------
+■■■ファイル名：user_register.html■■■
+概要：HTML
+詳細：HTML文書（ユーザー登録画面）を出力する。
+------------------------------------------------------------------------------------------------- -->
+
+<head>
+  <title>ユーザー登録画面</title>
+</head>
+<body th:object="${userForm}">
+  	<h2>ユーザー登録画面</h2>
+
+	<form  th:action="@{/user/register}"  method="post">
+
+	<p style="color: red" th:if="${error != null}" th:text="${error}"></p>
+	
+	<div>
+		<p>ユーザーID：<br>
+			<input type="text" name="userId" maxlength="20" id="ID_USER_ID" th:value="*{userId}">
+			<span th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" style="color: red">error!</span>
+		</p>
+
+	</div>
+
+	<div>
+		<p>名前： <br>
+			<input type="text" name="name" maxlength = "20" id="ID_USER_NAME" th:value="*{name}">
+		</p>
+		<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red">error!</span>
+	</div>
+
+	<div>
+		<p>パスワード：<br>
+		<input type="password" name="password" maxlength="20" id="ID_PASSWORD" th:value="*{password}">
+		</p>
+		<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red">error!</span>
+	</div>
+
+	<div>
+		<p>メールアドレス： <br>
+		<input type="text" name="email" maxlength = "20" id="ID_EMAIL" th:value="*{email}">
+		</p>
+		<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red">error!</span>
+	</div>
+
+
+	<input type="submit" value="ユーザー登録確認画面へ" id ="USE_REGISTER_SUBMIT">
+	</form>
+
+
+
+</body>
+</html>
+
+

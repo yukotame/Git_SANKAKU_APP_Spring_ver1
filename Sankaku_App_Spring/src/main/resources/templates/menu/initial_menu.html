@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- -------------------------------------------------------------------------------------------------
+■■■ファイル名：initial_menu.html■■■
+詳細：HTML文書（初期メニュー画面）を出力する。
+------------------------------------------------------------------------------------------------- -->
+
+<head>
+<meta charset="UTF-8">
+<title>初期メニュー画面</title>
+
+</head>
+<body>
+<h1>初期メニュー画面</h1>
+
+<p>メニュー一覧</p>
+
+<p th:text="${complete}" ></p>
+
+<a th:href="@{/user/form}">ユーザー登録</a><br>
+
+<a th:href="@{/loginForm}">ログイン</a><br>
+</body>
+<script type="text/javascript" src="js/demo2.js" th:src="@{/js/demo2.js}"></script>
+</html>

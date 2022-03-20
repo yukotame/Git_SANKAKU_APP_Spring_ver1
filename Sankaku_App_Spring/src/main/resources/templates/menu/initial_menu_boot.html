@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja" class="h-100" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>初期メニュー画面</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="starter-template.css"  th:href="@{/css/starter-template.css}" rel="stylesheet">
+
+</head>
+
+<body class="big-bg">
+<main>
+  <div class="container">
+	<div class="form-class">
+		<div class="title-class">
+			<h1>初期メニュー画面</h1>
+		</div>
+
+		<div class="title-class">
+			<h2>ようこそ</h2>
+		</div>
+
+		<div>
+			<a class="btn btn-primary btn-lg  mb-2" href="#" th:href="@{/loginForm}">ログイン</a>
+		</div>
+
+		<div>
+			<a class="btn btn-primary btn-lg mb-2" href="#" th:href="@{/userRegister/form}">ユーザー登録</a>
+		</div>
+
+
+	</div>
+
+
+
+
+</div>
+</main>
+
+
+
+</body>
+</html>

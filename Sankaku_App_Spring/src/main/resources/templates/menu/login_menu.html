@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- -------------------------------------------------------------------------------------------------
+■■■ファイル名：login_menu.html■■■
+概要：HTML
+詳細：HTML文書（ログインメニュー画面）を出力する。
+-------------------------------------------------------------------------------------------------
+-->
+<head>
+	<meta charset="UTF-8">
+	<title>ログインメニュー</title>
+</head>
+<body>
+	<h1>ログインメニュー画面</h1>
+
+<!-- <p>
+	<input type="hidden" name="UserId"  value="userId">
+	</p>
+-->
+
+	<p th:text="|${userName}さん　ようこそ|">Dummyさん　ようこそ </p>
+	<br>
+
+	<a th:href="@{'/schedule/menu1' }" >スケジュールの作成</a>
+	<br>
+
+	<a th:href="@{'/schedule/menu2' }" >参加可否入力</a>
+	<br>
+
+	<a th:href="@{'/schedule/menu3' }" >参加可否確認</a>
+	<br>
+
+
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="ログアウト" />
+	</form>
+
+
+</body>
+</html>

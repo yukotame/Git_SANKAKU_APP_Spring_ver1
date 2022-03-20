@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--
+-------------------------------------------------------------------------------------------------
+■■■ファイル名：participation_status.html■■■
+概要：HTML
+詳細：HTML文書（参加状況確認画面）を出力する。
+-------------------------------------------------------------------------------------------------
+-->
+
+<head>
+  <title>参加可否一覧画面</title>
+</head>
+<body>
+ <h1>参加可否一覧画面</h1>
+
+<table>
+		<tr>
+			<th>参加者</th>
+			<th>日程</th>
+			<th>参加可否</th>
+		</tr>
+		<tr th:each="participationResult: ${participationResultList}">
+			<td>
+				<span th:text="${participationResult.user.userName}"></span>
+			</td>
+			<td>
+				<span th:text="${participationResult.scheduleableDate.scheduleDate}"></span>
+			</td>
+			<td>
+				<span th:text="${participationResult.participation}"></span>
+			</td>
+
+
+	</table>
+
+
+  <br>
+  <a th:href="@{/login_menu}">ログインメニュー画面へ</a>
+
+
+  <script type="text/javascript" src="js/login-check.js"></script>
+</body>
+</html>

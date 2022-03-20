@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--
+-------------------------------------------------------------------------------------------------
+■■■ファイル名：create_schedule.html■■■
+概要：HTML
+詳細：HTML文書（スケジュール作成画面）を出力する。
+-------------------------------------------------------------------------------------------------
+-->
+<head>
+  <title>スケジュール作成画面</title>
+   <!-- Bootstrap core CSS -->
+  <link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="starter-template.css"  th:href="@{/css/starter-template.css}" rel="stylesheet">
+</head>
+
+<body th:object="${scheduleForm}">
+<main>
+  	<div class="container">
+	<div class="form-class">
+		<div class="title-class">
+		  	<h2>スケジュール作成画面</h2>
+		</div>
+
+		<div>
+		<form  th:action="@{/schedule/register}"  method="post">
+			<div class="mb-2" th:text="'発案者：： '     + *{originatorName}">
+				XXX
+			</div>
+			<div class="mb-3" th:text="'発案者ID： '           + *{originatorId}">
+				XXX
+			</div>
+
+		    <div>
+				<label for="ID_SCHEDULE_NAME" class="form-label">スケジュール名：</label>
+				<input type="text" name="scheduleName" maxlength="50" id="ID_SCHEDULE_NAME" th:value="*{scheduleName}">
+				<span th:if="${#fields.hasErrors('scheduleName')}" th:errors="*{scheduleName}" style="color: red">error!</span>
+			</div>
+
+			<br>
+		    <div class="mb-3">
+		    	<span th:if="${#fields.hasErrors('scheduleDate1')}" th:errors="*{scheduleDate1}" style="color:red">error!</span>
+				<label for="ID_SCHEDULE_DATE1" class="form-label">日程：</label>
+				<input type="date" name="scheduleDate1" maxlength="50" id="ID_SCHEDULE_DATE1" class="CLASS_SCHEDULE_DATE">
+			</div>
+			<div class="mb-3">
+				<span th:if="${#fields.hasErrors('scheduleDate2')}" th:errors="*{scheduleDate2}" style="color:red">error!</span>
+				<label for="ID_SCHEDULE_DATE2" class="form-label">日程：</label>
+				<input type="date" name="scheduleDate2" maxlength="50" id="ID_SCHEDULE_DATE2" class="CLASS_SCHEDULE_DATE">
+
+			</div>
+			<div class="mb-3">
+		        <span th:if="${#fields.hasErrors('scheduleDate3')}" th:errors="*{scheduleDate3}" style="color:red">error!</span>
+				<label for="ID_SCHEDULE_DATE3" class="form-label">日程：</label>
+				<input type="date" name="scheduleDate3" maxlength="50" id="ID_SCHEDULE_DATE3" class="CLASS_SCHEDULE_DATE">
+
+			</div>
+
+	   		<input class="btn btn-primary" type="submit" value="スケジュール登録" id="ID_ADD">
+	  	</form>
+		</div>
+
+	  	<div>
+	  		<a class="btn btn-secondary mt-3" th:href="@{/login_menu}">ログインメニュー画面へ</a>
+	  	</div>
+	 </div>
+
+	</div>
+</main>
+
+  <!-- src/main/resources/static/js/**.jsを読み込む -->
+  <script type="text/javascript" src="js/create-schedule-check.js" th:src="@{/js/create-schedule-check.js}"></script>
+
+</body>
+</html>

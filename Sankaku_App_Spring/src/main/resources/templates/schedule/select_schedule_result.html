@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<!--
+-------------------------------------------------------------------------------------------------
+■■■ファイル名：select_all_schedule_result.html■■■
+概要：HTML
+詳細：HTML文書（検索結果一覧画面）を出力する。
+-------------------------------------------------------------------------------------------------
+-->
+
+
+<head>
+<meta charset="UTF-8">
+<title>検索結果</title>
+</head>
+
+<body >
+
+	<h1>検索結果一覧画面</h1>
+	<input type="hidden" name="menuId" th:value=${menuId}>
+
+	<!-- 	id検索した場合の出力 -->
+	<div th:if=${scheduleId}>
+		<a th:href = "@{'/participation/' + ${menuId} + '/' + ${scheduleId}}"
+		   th:text="|id: ${scheduleId}  スケジュール名: ${scheduleName}|">  </a>
+		<br>
+	</div>
+
+	<!-- 	全件検索した場合の出力 -->
+	<table th:if=${all_schedule} class="table table-striped">
+		<tr>
+			<th>ID</th>
+			<th>スケジュール名</th>
+		</tr>
+		<tr th:each="schedule: ${all_schedule}">
+			<td>
+				<span  th:text="${schedule.scheduleId}"></span>
+
+			</td>
+			<td>
+				<a th:href = "@{'/participation/'+ ${menuId}+ '/' + ${schedule.scheduleId} }" th:text="${schedule.scheduleName}"></a>
+			</td>
+		</tr>
+
+	</table>
+	<br>
+	<a th:href="@{'/schedule/' + ${menuId}}">スケジュール検索画面へ</a>
+	<br>
+	<a th:href="@{/login_menu}">ログインメニュー画面へ</a>
+
+
+</body>
+
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<!--
+-------------------------------------------------------------------------------------------------
+■■■ファイル名：select_all_schedule_result.html■■■
+概要：HTML
+詳細：HTML文書（検索結果一覧画面）を出力する。
+-------------------------------------------------------------------------------------------------
+-->
+
+
+<head>
+<meta charset="UTF-8">
+<title>検索結果</title>
+<!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="starter-template.css"  th:href="@{/css/starter-template.css}" rel="stylesheet">
+</head>
+
+<body th:with="user=${#authentication.principal.user}">
+
+<main>
+  	<div class="container">
+
+
+		<div class="title-class">
+			<h1>検索結果一覧画面</h1>
+		</div>
+
+		<input type="hidden" name="menuId" th:value=${menuId}>
+
+		<!-- 	id検索した場合の出力 -->
+		<table th:if=${scheduleId} class="table table-striped">
+			<tr>
+				<th>ID</th>
+				<th>スケジュール名</th>
+			</tr>
+			<tr>
+				<td>
+					<span  th:text="${scheduleId}"></span>
+
+				</td>
+				<td>
+					<a th:href = "@{'/participation/' + ${menuId} + '/' + ${scheduleId}}" th:text="${scheduleName}"></a>
+				</td>
+
+			</tr>
+
+		</table>
+
+
+		<!-- 	全件検索した場合の出力 -->
+		<table th:if=${all_schedule} class="table table-striped">
+			<tr>
+				<th>ID</th>
+				<th>スケジュール名</th>
+				<th th:if="${form_switch}" style="margin:10px">取り消し</th>
+			</tr>
+			<tr th:each="schedule: ${all_schedule}">
+				<td>
+					<span  th:text="${schedule.scheduleId}"></span>
+
+				</td>
+				<td>
+					<a th:href = "@{'/participation/'+ ${menuId}+ '/' + ${schedule.scheduleId} }" th:text="${schedule.scheduleName}"></a>
+				</td>
+				<td th:if="${form_switch}" style="margin:10px">
+
+					<form th:action="@{'/schedule/delete/'}" method="post"
+					 sec:authorize="${hasRole('ADMIN') or #vars.user.userId == #vars.schedule.user.userId}">
+						<input type="hidden" name="scheduleId" th:value="${schedule.scheduleId}">
+						<input type="submit" name="cancel" value="取消">
+					</form>
+				</td>
+			</tr>
+
+		</table>
+		<div class="mb-2">
+			<a class="btn btn-secondary" th:href="@{'/schedule/' + ${menuId}}">スケジュール検索画面へ</a>
+		</div>
+
+		<div>
+			<a class="btn btn-secondary" th:href="@{/login_menu}">ログインメニュー画面へ</a>
+		</div>
+
+	</div>
+</main>
+</body>
+
+
+</body>
+</html>

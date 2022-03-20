@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--
+-------------------------------------------------------------------------------------------------
+■■■ファイル名：create_project_result.html■■■
+概要：HTML
+詳細：HTML文書（プロジェクト作成結果画面）を出力する。
+------------------------------------------------------------------------------------------------->
+
+<head>
+<meta charset="UTF-8">
+<title>プロジェクト作成結果</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="starter-template.css"  th:href="@{/css/starter-template.css}" rel="stylesheet">
+
+
+</head>
+<body class="big-bg">
+
+	<main>
+  	<div class="container">
+
+	<div class="form-class">
+		<div class="title-class">
+			<h1>プロジェクト作成結果画面</h1>
+		</div>
+
+		<div>
+		  	<h3>プロジェクト登録完了しました。</h3>
+
+		</div>
+
+		<div class="text-primary my-5">
+  			<h2 th:text="|発番されたプロジェクトID:  ${resultScheduleId}|"></h2>
+		</div>
+
+
+	  <div>
+	  	<a class="btn btn-secondary" th:href="@{/login_menu}">ログインメニュー画面へ</a>
+	  </div>
+
+  </div>
+</div>
+</main>
+
+
+</body>
+</html>

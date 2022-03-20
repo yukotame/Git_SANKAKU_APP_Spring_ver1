@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="starter-template.css"  th:href="@{/css/starter-template.css}" rel="stylesheet">
+<title>Error</title>
+</head>
+<body>
+
+	<main>
+  	<div class="containar">
+
+
+		<div class="form-class">
+			<div class="title-class">
+				<h1 th:text="${status} + ' ' + ${error}">404 Not Found !!</h1>
+				<p>The requested URL was not found on this server</p>
+			</div>
+
+		<div>
+
+		</div>
+			<a class="btn btn-secondary" th:href="@{/init/menu}">初期画面に戻る</a>
+		</div>
+	</div>
+	</main>
+
+
+</body>
+</html>

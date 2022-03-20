@@ -1,0 +1,70 @@
+
+
+
+body {
+  padding-top: 5rem;
+  background-color: #f5f5f5;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+ /*  text-align: center; */
+}
+
+.form-containar{
+	width:60%;
+	margin: 0 auto;
+
+}
+
+.title-class{
+	/* margin-top:1rem; */
+	padding-bottom:2rem;
+
+}
+
+.big-bg{
+	background-image: url(../images/main-bg.jpg);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    min-height: 100%;
+
+}
+
+.form-class {
+  width: 100%;
+  max-width: 800px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-class2 {
+  width: 100%;
+  max-width: 1000px;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+.confirm{
+	font-size:1.2rem;
+}
+
+.confirm ul{
+	list-style :none;
+	padding-left:5px !important;
+}
+
+.confirm ul li{
+	margin-bottom: 25px;
+	margin-top: 25px;
+
+}
+.button-parent{
+	margin-top:50px;
+}
+
+.button-child{
+	margin-top:25px;
+}
+
+

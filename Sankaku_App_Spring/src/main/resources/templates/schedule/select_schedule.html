@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--
+-------------------------------------------------------------------------------------------------
+■■■ファイル名：select_schedule.html■■■
+概要：HTML
+詳細：HTML文書（スケジュール検索画面）を出力する。
+-------------------------------------------------------------------------------------------------
+-->
+<head>
+  <title>スケジュール検索画面</title>
+</head>
+
+<body class="bg-light">
+	<div class="container">
+	<main class="py-5">
+		<h1>スケジュール検索画面</h1>
+
+
+		<form th:object="${scheduleSelectForm}" th:action="@{'/schedule/select/'+ ${menuId} }" method="get">
+			<input type="text" name="MENU" th:value =${menuId}>
+			<input type="text" name="SEARCH" th:value =1>
+			<p>スケジュールID検索：<br>
+			  <input type="text" name="SCHEDULE_ID" maxlength="20" id="ID_SCHEDULE_ID" th:field=*{scheduleId}>
+			</p>
+			<input type="submit" value="検索" id="ID_SERCH">
+		</form>
+		<br>
+
+
+		<form th:action="@{'/schedule/selectAll/'+ ${menuId}}" method="get">
+			<p>スケジュール全件検索：</p><br>
+			<input type="hidden" name="MENU" th:value =${menuId}>
+			<input type="hidden" name="SEARCH" value =2>
+			<br>
+			<input type="submit" value="スケジュール全件検索" id="ID_SERCH_ALL">
+		</form>
+
+	 	<br>
+	 	<a th:href="@{/login_menu}">ログインメニュー画面へ</a>
+
+	</main>
+	</div>
+	<script type="text/javascript" src="js/select-menu-check.js" th:src="@{/js/select-menu-check.js}"></script>
+</body>
+</html>
