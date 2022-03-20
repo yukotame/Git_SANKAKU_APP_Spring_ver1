@@ -47,8 +47,7 @@ public class UserRegisterController {
 	@PostMapping("register")
 	String userRegister(@Validated  UserForm userForm , BindingResult result , Model model ) {
 
-		System.out.println("userRegister!!!");
-		System.out.println("result.hasErrors(): " + result.hasErrors());
+
 		//ユーザー登録の入力にエラーがあった場合、入力フォームに戻る。
 		if(result.hasErrors()) {
 			model.addAttribute("error", "ユーザー登録情報に誤りがあります。");

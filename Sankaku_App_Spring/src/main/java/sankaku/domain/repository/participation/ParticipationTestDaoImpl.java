@@ -17,9 +17,6 @@ public class ParticipationTestDaoImpl implements ParticipationTestDao {
 
 	@Override
 	public void insert(UserParticipation userParticipation) {
-		System.out.println("scheduleable_date_id: " + userParticipation.getScheduleableDate().getScheduleableDateId());
-		System.out.println("user_id : " + userParticipation.getUser().getUserId());
-		System.out.println("participation : " + userParticipation.getParticipation() );
 
 		jdbcTemplate.update("INSERT INTO sankaku_db_spring.USER_PARTICIPATION (scheduleable_date_id , user_id , participation) VALUES(?, ?, ?)",
 				userParticipation.getScheduleableDate().getScheduleableDateId() ,

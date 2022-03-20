@@ -29,7 +29,7 @@ public class ParticipationService {
 	//スケジュール検索処理
 	@Transactional
 	public List<UserParticipation> selectAll() {
-		System.out.println("ParticipationService findAll ");
+
 		return participationRepository.findAll();
 	}
 
@@ -48,13 +48,11 @@ public class ParticipationService {
 
 	@Transactional
 	public List<UserParticipation> selectParticipationByScheduleIdOrderByscheduleableDateAsc(int schId) {
-		System.out.println("ParticipationService selectParticipationByScheduleId: " + schId);
 		return participationRepository.findAllParticipationByScheduleIdOrderByscheduleableDateAsc(schId);
 	}
 
 	@Transactional
 	public List<UserParticipation> selectParticipationByScheduleIdOrderByuserIdAsc(int schId) {
-		System.out.println("ParticipationService selectParticipationByScheduleId: " + schId);
 		return participationRepository.findAllParticipationByScheduleIdOrderByuserIdAsc(schId);
 	}
 

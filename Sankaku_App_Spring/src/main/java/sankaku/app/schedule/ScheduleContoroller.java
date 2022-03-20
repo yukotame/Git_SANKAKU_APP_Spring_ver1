@@ -100,7 +100,7 @@ public class ScheduleContoroller {
 		List<ScheduleableDate> scheduleDateList = new ArrayList<ScheduleableDate>();
 		for(LocalDate sdate : DateList) {
 
-			System.out.println("sdate: " + sdate);
+
 			//（１対多の多側のセット）
 			ScheduleableDate scheduleableDate = new ScheduleableDate();
 			//Formからの日付をscheduleableDate型に格納する
@@ -189,7 +189,7 @@ public class ScheduleContoroller {
 		model.addAttribute("scheduleName" , schedule.getScheduleName());
 		model.addAttribute("scheduleId" , schedule.getScheduleId());
 		model.addAttribute("menuId","menu2");
-
+		model.addAttribute("form_switch" , false);
 
 		return "schedule/select_schedule_result_boot";
 	}
@@ -201,6 +201,7 @@ public class ScheduleContoroller {
 
 		model.addAttribute("menuId","menu2");
 		model.addAttribute("all_schedule" , allSchedule);
+		model.addAttribute("form_switch" , false);
 		return "schedule/select_schedule_result_boot";
 	}
 
@@ -229,6 +230,7 @@ public class ScheduleContoroller {
 		model.addAttribute("scheduleName" , schedule.getScheduleName());
 		model.addAttribute("scheduleId" , schedule.getScheduleId());
 		model.addAttribute("menuId","menu3");
+		model.addAttribute("form_switch" , false);
 		return "schedule/select_schedule_result_boot";
 	}
 
@@ -239,6 +241,7 @@ public class ScheduleContoroller {
 
 		model.addAttribute("menuId","menu3");
 		model.addAttribute("all_schedule" , allSchedule);
+		model.addAttribute("form_switch" , false);
 		return "schedule/select_schedule_result_boot";
 	}
 
@@ -269,12 +272,9 @@ public class ScheduleContoroller {
 
 		//スケジュールIDに紐付くスケジュール日程テーブルを検索。スケジュール日程テーブルのIDをリスト化（idList）
 		List<Integer> idList = new ArrayList<Integer>();
-		System.out.println("scheduleId : " + scheduleId);
 		for(ScheduleableDate scheduleableDate: scheduleableDateList) {
 			idList.add(scheduleableDate.getScheduleableDateId());
 
-			System.out.println("scheduleableDate Id: " + scheduleableDate.getScheduleableDateId());
-			System.out.println("scheduleableDate Date: " + scheduleableDate.getScheduleDate());
 
 			//日程テーブルに紐付く参加者が存在するか？
 			List<UserParticipation> userList = new ArrayList<UserParticipation>();
@@ -287,7 +287,6 @@ public class ScheduleContoroller {
 
 			List<UserParticipationId> userParticipationIdList = new ArrayList<UserParticipationId>();
 			for(UserParticipation user : userList) {
-				System.out.println("user: " + user.getUser().getUserName());
 				userParticipationIdList.add(user.getUserParticipationId());
 			}
 

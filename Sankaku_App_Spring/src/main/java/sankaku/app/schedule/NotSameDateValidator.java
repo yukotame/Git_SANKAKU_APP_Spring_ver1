@@ -18,9 +18,6 @@ public class NotSameDateValidator implements ConstraintValidator<NotSameDate, Sc
 	@Override
     public boolean isValid(ScheduleForm value, ConstraintValidatorContext context) {
 
-		System.out.println(value.getScheduleDate1());
-		System.out.println(value.getScheduleDate2());
-		System.out.println(value.getScheduleDate3());
 
 		//nullでないかつ同じ日を持っている場合エラー
 		if(value.getScheduleDate1() != null && value.getScheduleDate2() != null &&

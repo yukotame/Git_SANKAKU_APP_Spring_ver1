@@ -79,7 +79,7 @@
 			</tr>
 
 		</table>
-		<div class="mb-2">
+		<div class="mb-2" th:if="${!(form_switch)}" >
 			<a class="btn btn-secondary" th:href="@{'/schedule/' + ${menuId}}">スケジュール検索画面へ</a>
 		</div>
 

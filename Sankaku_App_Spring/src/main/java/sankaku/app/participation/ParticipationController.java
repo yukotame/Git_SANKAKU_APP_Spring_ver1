@@ -69,9 +69,7 @@ public class ParticipationController {
 			DateParticipationListForm form,
 			Model model) {
 
-		System.out.println("Menu2Participation" + schId);
-		System.out.println("id:    " + userdetails.getUser().getUserId());
-		System.out.println("name:   " + userdetails.getUser().getUserName());
+
 		ArrayList<ScheduleableDate> scheduleableResultList = new ArrayList<ScheduleableDate>();
 		//スケジュール日程デーブルを検索
 		scheduleableResultList = scheduleableDateService.selectByScheduleId(schId);
@@ -102,24 +100,18 @@ public class ParticipationController {
 			BindingResult result,
 			Model model) {
 
-		System.out.println("Menu2SelectedParticipation");
-		//System.out.println(form.getDateParticipationList().get(0).getSelectedParticipation());
-		//System.out.println(form.getDateParticipationList().get(0).getScheduleableDateOutput());
+
 
 		if (result.hasErrors()) {
 			return "error";
 		}
-		System.out.println("Menu2SelectedParticipation!!");
+
 		//ユーザー参加可否テーブル(user_participation)へ登録情報をセット
 		for (DateParticipationForm dform : form.getDateParticipationList()) {
 
 			ScheduleableDate scheduleableDate = new ScheduleableDate();
 			scheduleableDate.setScheduleableDateId(dform.getScheduleableDateOutput().getScheduleableDateId());
 			scheduleableDate.setScheduleDate(dform.getScheduleableDateOutput().getScheduleDate());
-
-			System.out.println("ParticipationController dform!!");
-			System.out.println(dform.getScheduleableDateOutput().getScheduleableDateId());
-			System.out.println(dform.getScheduleableDateOutput().getScheduleDate());
 
 			UserParticipation userParticipation = new UserParticipation();
 			UserParticipationId userParticipationId = new UserParticipationId();
@@ -196,22 +188,9 @@ public class ParticipationController {
 
 		form.setParticipationStatusAllList(eachPersonFormList);
 
-		/*		for (ParticipationStatusEachPerson p : form.getParticipationStatusAllList()) {
-					System.out.println("表示用FORMの確認！");
-					System.out.println(p.getUserId());
-					for(LocalDate pp : p.getScheduleDateList()) {
-						System.out.println("Date: " + pp );
 
-					}
-					for(Participation ss : p.getParticipationStatusList()) {
-						System.out.println("status: " + ss );
-
-					}
-
-				}*/
 
 		//-------------- 参加者の集計 ------------------------------------
-		System.out.println("参加者の集計");
 		List<UserParticipation> participationResultOrderByscheduleableDateIdList = new ArrayList<UserParticipation>();
 
 		//スケジュールIDからユーザー参加可否デーブルを全件検索検索（日程ごとにソート）
@@ -234,15 +213,12 @@ public class ParticipationController {
 		//日ごとにソートされた参加者リストについて、出力用にフォームにセットする。
 		while(yy < participationResultOrderByscheduleableDateIdList.size()) {
 			boolean addList_switch = false;
-			System.out.println("yy: " + yy);
 			UserParticipation p = participationResultOrderByscheduleableDateIdList.get(yy);
 			if (yy == 0) {
 				//1件目の日程をワークに格納する。
 				work_date = p.getScheduleableDate().getScheduleDate();
 			}
 
-
-			System.out.println("xx: " + xx);
 			//ワークの日程と比較し、同じ日付の参加候補者のみリストにセットする
 			while(xx < participationResultOrderByscheduleableDateIdList.size()) {
 				UserParticipation pp = participationResultOrderByscheduleableDateIdList.get(xx);
@@ -267,9 +243,7 @@ public class ParticipationController {
 			}
 
 			if(addList_switch) {
-				System.out.println("participationCnt: " + participationCnt);
-				System.out.println("nonParticipationCnt: " + nonParticipationCnt);
-				System.out.println("undecidedCnt: " + undecidedCnt);
+
 				participationCntList.add(participationCnt);
 				nonParticipationCntList.add(nonParticipationCnt);
 				undecidedCntList.add(undecidedCnt);
